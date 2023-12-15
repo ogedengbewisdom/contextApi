@@ -51,9 +51,9 @@ const inialFunction = (state, action) => {
 const CartContextProvider = ({children}) => {
 
     const [shoppingCartState, dispatchShoppingCart] = useReducer(inialFunction, initialObject)
-    const [shoppingCart, setShoppingCart] = useState({
-        items: [],
-      });
+    // const [shoppingCart, setShoppingCart] = useState({
+    //     items: [],
+    //   });
     function handleUpdateCartItemQuantity(productId, amount) {
         // setShoppingCart((prevShoppingCart) => {
         //   const updatedItems = [...prevShoppingCart.items];
