@@ -1,4 +1,12 @@
-export default function Cart({ items, onUpdateItemQuantity }) {
+import { useContext } from "react";
+import { CartContext } from "../store/cart-ctx";
+
+export default function Cart() {
+
+  const ctx = useContext(CartContext);
+  const items = ctx.items
+  const onUpdateItemQuantity = ctx.updateCart
+  const addTocart = ctx.addToCart
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -20,11 +28,11 @@ export default function Cart({ items, onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => onUpdateItemQuantity(item.id)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => addTocart(item.id)}>
                     +
                   </button>
                 </div>
